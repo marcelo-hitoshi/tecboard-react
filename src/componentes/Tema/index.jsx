@@ -1,3 +1,5 @@
+import "./tema.estilos.css";
+
 export function Tema({ tema }) {
-  return <h2>{tema.nome}</h2>;
+  return <h3 className="titulo-tema">{tema.nome}</h3>;
 }
