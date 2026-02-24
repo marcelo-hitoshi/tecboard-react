@@ -39,12 +39,17 @@ function App() {
 
   const eventos = [
     {
-      capa: "http://...",
+      capa: "https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png",
       tema: temas[0],
       data: new Date(),
       titulo: "Mulheres no Front",
     },
   ];
+
+  function adicionarEvento(evento) {
+    eventos.push(evento);
+    console.log("Eventos => ", eventos);
+  }
 
   return (
     <main>
@@ -52,7 +57,7 @@ function App() {
         <img src="/logo.png" alt="" />
       </header>
       <Banner />
-      <FormularioDeEvento temas={temas} />
+      <FormularioDeEvento temas={temas} aoSubmeter={adicionarEvento} />
       {temas.map(function (item) {
         return (
           <section key={item.id}>
