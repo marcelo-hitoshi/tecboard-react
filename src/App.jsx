@@ -62,7 +62,9 @@ function App() {
         return (
           <section key={item.id}>
             <Tema tema={item} />
-            <CardEvento evento={eventos[0]} />
+            {eventos.map(function (item, indice) {
+              return <CardEvento evento={item} key={indice} />;
+            })}
           </section>
         );
       })}
