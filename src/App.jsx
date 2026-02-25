@@ -38,8 +38,6 @@ function App() {
     },
   ];
 
-  //const eventos = [];
-
   const [eventos, setEventos] = useState([
     {
       capa: "https://raw.githubusercontent.com/viniciosneves/tecboard-assets/refs/heads/main/imagem_1.png",
