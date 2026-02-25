@@ -52,7 +52,7 @@ function App() {
   function adicionarEvento(evento) {
     setEventos([...eventos, evento]);
   }
-
+  // Renderização condicional usando &&
   return (
     <main>
       <header>
@@ -60,16 +60,32 @@ function App() {
       </header>
       <Banner />
       <FormularioDeEvento temas={temas} aoSubmeter={adicionarEvento} />
-      {temas.map(function (item) {
-        return (
-          <section key={item.id}>
-            <Tema tema={item} />
-            {eventos.map(function (item, indice) {
-              return <CardEvento evento={item} key={indice} />;
-            })}
-          </section>
-        );
-      })}
+
+      <section className="container">
+        {temas.map(function (tema) {
+          if (
+            !eventos.some(function (evento) {
+              return evento.tema.id === tema.id;
+            })
+          ) {
+            return null;
+          }
+          return (
+            <section key={tema.id}>
+              <Tema tema={tema} />
+              <div className="eventos">
+                {eventos
+                  .filter(function (evento) {
+                    return evento.tema.id === tema.id;
+                  })
+                  .map(function (evento, indice) {
+                    return <CardEvento evento={evento} key={indice} />;
+                  })}
+              </div>
+            </section>
+          );
+        })}
+      </section>
     </main>
   );
 }
